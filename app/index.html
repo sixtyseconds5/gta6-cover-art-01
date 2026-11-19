@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Cover Studio — GTA-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover editor">
+    <h1>Vice Cover Studio</h1>
+    <p class="tagline">Turn your photos into a multi-panel Vice City cover. Your photos never leave this machine.</p>
+
+    <h2>1 · Photos</h2>
+    <label class="file-label">Add photos
+      <input id="photos" type="file" accept="image/*" multiple>
+    </label>
+    <div class="sample-row">
+      <span>Or try a sample:</span>
+      <button id="samplePier" type="button">Pier</button>
+      <button id="sampleBoulevard" type="button">Boulevard</button>
+    </div>
+    <div id="photoList" class="photo-list" aria-live="polite"></div>
+
+    <h2>2 · Layout</h2>
+    <div id="layoutBtns" class="btn-row" role="group" aria-label="Cover layout"></div>
+
+    <h2>3 · Panels</h2>
+    <p class="hint">Pick a photo per panel. Click a panel, or “Crop this”, then drag the preview to move the photo and use the zoom slider.</p>
+    <div id="panelRows"></div>
+    <label class="slider-label">Zoom <span id="zoomVal">100%</span>
+      <input id="zoom" type="range" min="100" max="300" value="100">
+    </label>
+    <button id="resetCrop" type="button">Reset crop of selected panel</button>
+
+    <h2>4 · Caption</h2>
+    <label>Title
+      <input id="title" type="text" maxlength="30" value="VICE CITY">
+    </label>
+    <label>Subtitle
+      <input id="subtitle" type="text" maxlength="60" value="Neon nights, palm dreams">
+    </label>
+
+    <h2>5 · Colour grade</h2>
+    <div id="gradeBtns" class="btn-row" role="group" aria-label="Colour grade"></div>
+
+    <h2>6 · Export</h2>
+    <label>Size
+      <select id="sizeSel" aria-label="Export size"></select>
+    </label>
+    <button id="export" type="button" class="export-btn">Export PNG</button>
+    <p id="status" role="status"></p>
+  </section>
+
+  <section class="preview" aria-label="Cover preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover preview"></canvas>
+    <p class="preview-hint">Live preview — drag a panel to move its photo.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
